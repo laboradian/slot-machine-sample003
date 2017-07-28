@@ -8,6 +8,7 @@ class Reel {
    */
   constructor(options) {
     this.canvas = document.querySelector(`#${options.canvasId}`);
+
     this.spriteJson = options.spriteJson;
 
     // 回転する要素数
@@ -43,23 +44,34 @@ class Reel {
     this.canvas.height = this.MARGIN_TOP + this.MARGIN_BOTTOM + (this.SYMBOL_HEIGHT - 1) * this.SHOW_MAX + 1;
     this.ctx = this.canvas.getContext('2d');
 
-    this.shuffleSymbols();
-
     const spriteImage = new Image();
 
     this.spriteLoader = new SpriteLoader(spriteImage, this.ctx, this.spriteJson);
 
+    this.shuffleSymbols();
+
     spriteImage.addEventListener('load', (/*e*/) => {
       let i;
 
-      // カードの描画
-      const h = this.SYMBOL_HEIGHT - 1; // 枠線の分は重ねる
+      // シンボルの描画
       for (i=0; i<this.SHOW_MAX; i++) {
-        this.spriteLoader.drawImage(this.symbols[i], this.MARGIN_LEFT, this.MARGIN_TOP + (h * i));
+        this.spriteLoader.drawImage(this.symbols[i], this.MARGIN_LEFT, this.MARGIN_TOP + (this.SYMBOL_HEIGHT * i));
       }
 
     });
     spriteImage.src = 'img/sprite.png';
+  }
+
+  /**
+   * 2回目以降の実行時にはこのメソッドを呼び出す
+   */
+  reInit() {
+    let i;
+    this.shuffleSymbols();
+    // シンボルの描画
+    for (i=0; i<this.SHOW_MAX; i++) {
+      this.spriteLoader.drawImage(this.symbols[i], this.MARGIN_LEFT, this.MARGIN_TOP + (this.SYMBOL_HEIGHT * i));
+    }
   }
 
   /**
@@ -86,6 +98,9 @@ class Reel {
     this.symbols = symbols_tmp;
   }
 
+  /**
+   *
+   */
   start() {
     this.num_running = true;
   }

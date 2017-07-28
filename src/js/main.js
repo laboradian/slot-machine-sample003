@@ -36,6 +36,7 @@ let speed = 10;
 
 let reel0, reel1, reel2;
 let num_running = 0;
+let num_play = 0;
 
 window.addEventListener('load', () => {
 
@@ -66,15 +67,18 @@ window.addEventListener('load', () => {
 // スピード調整
 //---------------
 document.querySelector('#inputRangeSpeed').addEventListener('change', (e) => {
-  // 1から20になる
   speed = Math.abs(e.currentTarget.value - 26);
-  console.log(speed);
 });
 
 const start = () => {
   let cnt = 0;
-
   num_running = 3;
+
+  if (num_play > 0) {
+    reel0.reInit();
+    reel1.reInit();
+    reel2.reInit();
+  }
 
   reel0.start();
   reel1.start();
@@ -95,6 +99,7 @@ const start = () => {
   reqId = window.requestAnimationFrame(step);
 
   btnStart.disabled = true;
+  num_play++;
 };
 
 
