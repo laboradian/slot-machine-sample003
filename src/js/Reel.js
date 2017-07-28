@@ -24,6 +24,7 @@ class Reel {
 
     // シンボル画像IDの配列
     this.symbols = [];
+    this.current_symbol = '';
 
     this.spriteLoader;
     this.canvas;
@@ -113,6 +114,7 @@ class Reel {
         this.MARGIN_LEFT,
         this.MARGIN_TOP + (h * i)
       );
+      this.current_symbol = this.symbols[idx];
     }
 
     // 次回、1つ目として表示する要素のインデックス番号を設定する

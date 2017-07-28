@@ -40,3 +40,26 @@ canvas {
     display: inline-block;
   }
 }
+
+.excellent-default {
+  display: none;
+  position: absolute;
+}
+
+.excellent {
+  font-size: 5em;
+  font-weight: bold;
+  color: #009dff;
+  width: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-duration: 6s;
+  animation-name: excellent;
+}
+
+@keyframes excellent {
+  from { top: 50%; left: 40%; transform: scale(0) rotate(0deg); }
+  50%  { top: 50%; left: 40%; transform: scale(1) rotate(-720deg); }
+  to   { top: 50%; left: 40%; transform: scale(1) rotate(-720deg); }
+}

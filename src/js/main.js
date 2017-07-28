@@ -12,13 +12,11 @@ require('file-loader?name=../../dist/[name].[ext]!../index.html');
 // 画像のコピー
 require('file-loader?name=../../dist/img/[name].[ext]!../img/sprite.png');
 
-
 const spriteJson = require('./sprite.json');
 
 console.log('%c 🌈 Laboradian.com 🌈 %c http://laboradian.com ',
   'background: #2383BF; color: #fff; font-size: 1.4em;',
   'background: #e3e3e3; color: #000; margin-bottom: 1px; padding-top: 4px; padding-bottom: 1px;');
-
 
 
 //======================
@@ -29,6 +27,8 @@ const btnStart = document.querySelector('#btnStart');
 const btnStop0 = document.querySelector('#btnStop0');
 const btnStop1 = document.querySelector('#btnStop1');
 const btnStop2 = document.querySelector('#btnStop2');
+const resultMessage = document.querySelector('#excellent');
+
 
 // requestAnimationFrame の戻り値
 let reqId;
@@ -110,8 +110,16 @@ const stopOneSymbole = (reelObj) => {
   if (num_running === 0) {
     window.cancelAnimationFrame(reqId);
     btnStart.disabled = false;
-  }
 
+    if (reel0.current_symbol === reel1.current_symbol &&
+        reel0.current_symbol === reel2.current_symbol) {
+
+      resultMessage.className = 'excellent';
+      setTimeout(() => {
+        resultMessage.className = 'excellent-default';
+      }, 5900);
+    }
+  }
 };
 
 
@@ -128,7 +136,7 @@ btnStop2.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === ' ') {
+  if (event.key === 'Enter') {
     switch (num_running) {
       case 3:
         stopOneSymbole(reel0);
