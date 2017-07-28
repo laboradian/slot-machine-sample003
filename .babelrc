@@ -1,0 +1,7 @@
+{
+    "presets": [ "env", "stage-2" ],
+    "compact": false,
+    "plugins": [
+        "babel-plugin-espower"
+    ]
+}

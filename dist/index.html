@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"  >
+  <!--  Font Awesome の CDN  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <title>スロットマシーンのサンプル003</title>
+</head>
+<body>
+
+  <header>
+    <h1>スロットマシーンのサンプル003</h1>
+  </header>
+
+  <div class="well">
+    <p>説明</p>
+    <ul>
+      <li>干支の画像を使ったスロットマシーンです。</li>
+      <li>画像は干支の順番で並んでいます。</li>
+    </ul>
+
+    <p>操作方法</p>
+    <ul>
+      <li>[スタート]ボタンを押して、あとは [ストップ]ボタンを押していくだけです。</li>
+      <li>もしくは、<kbd>Space</kbd> キーを押すだけでも [スタート] → [ストップ] することができます。</li>
+    </ul>
+  </div>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">スロットマシーン</div>
+    <div class="panel-body">
+      <div class="lr-slot-container">
+        <div>
+          <canvas id="reel0"></canvas>
+          <button id="btnStop0" type="button" class="btn btn-danger text-center">ストップ</button>
+        </div>
+        <div>
+          <canvas id="reel1"></canvas>
+          <button id="btnStop1" type="button" class="btn btn-danger">ストップ</button>
+        </div>
+        <div>
+          <canvas id="reel2"></canvas>
+          <button id="btnStop2" type="button" class="btn btn-danger">ストップ</button>
+        </div>
+      </div>
+
+      <div class="lr-btns">
+        <button id="btnStart" type="button" class="btn btn-success">スタート</button>
+      </div>
+      <div class="lr-speed">
+        スピード:<br>
+        <span>Min</span><input type="range" id="inputRangeSpeed" min="5" max="25" value="15"><span>Max</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="well">
+    <p>ソースコードはこちら</p>
+    <ul>
+      <li><a href="https://github.com/laboradian/slot-machine-sample003">laboradian/slot-machine-sample003</a></li>
+    </ul>
+  </div>
+
+  <hr>
+  <footer>© 2017 <a href="http://laboradian.com/">Laboradian</a></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="js/main.js" charset="utf-8"></script>
+</body>
+</html>

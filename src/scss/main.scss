@@ -1,0 +1,42 @@
+@import './bootstrap-variables';
+@import './bootstrap-custom';
+
+body {
+  padding: 20px;
+}
+
+footer {
+  text-align: right;
+}
+
+canvas {
+  background-color: #fffbcc;
+  border: 1px solid #dfe2e5;
+}
+
+.lr-slot-container {
+  display: flex;
+  width: 594px;
+  & > div {
+    //width: 198px;
+    margin: 0 auto;
+    & > button {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.lr-btns,
+.lr-speed {
+  width: 594px;
+  text-align: center;
+  * {
+    margin: 15px;
+  }
+  > input[type='range'] {
+    width: 40%;
+    margin: 10px auto;
+    display: inline-block;
+  }
+}
