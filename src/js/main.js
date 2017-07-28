@@ -28,6 +28,7 @@ const btnStop0 = document.querySelector('#btnStop0');
 const btnStop1 = document.querySelector('#btnStop1');
 const btnStop2 = document.querySelector('#btnStop2');
 const resultMessage = document.querySelector('#excellent');
+const inputRangeSpeed = document.querySelector('#inputRangeSpeed');
 
 
 // requestAnimationFrame の戻り値
@@ -66,9 +67,16 @@ window.addEventListener('load', () => {
 //---------------
 // スピード調整
 //---------------
-document.querySelector('#inputRangeSpeed').addEventListener('change', (e) => {
-  speed = Math.abs(e.currentTarget.value - 26);
+inputRangeSpeed.addEventListener('change', (event) => {
+  speed = convertRangeValueToSpeed(event.currentTarget.value);
 });
+
+/**
+ *
+ */
+const convertRangeValueToSpeed = (value) => {
+  return Math.abs(value - 26);
+}
 
 const start = () => {
   let cnt = 0;
@@ -141,22 +149,34 @@ btnStop2.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    switch (num_running) {
-      case 3:
-        stopOneSymbole(reel0);
-        break;
-      case 2:
-        stopOneSymbole(reel1);
-        break;
-      case 1:
-        stopOneSymbole(reel2);
-        break;
-      case 0:
-        start();
-        break;
-      default:
-        // do nothing
-    }
+  switch (event.key) {
+    case 'Enter':
+      switch (num_running) {
+        case 3:
+          stopOneSymbole(reel0);
+          break;
+        case 2:
+          stopOneSymbole(reel1);
+          break;
+        case 1:
+          stopOneSymbole(reel2);
+          break;
+        case 0:
+          start();
+          break;
+        default:
+          // do nothing
+      }
+      break;
+    case 'ArrowLeft':
+      inputRangeSpeed.value--;
+      speed = convertRangeValueToSpeed(inputRangeSpeed.value);
+      break;
+    case 'ArrowRight':
+      inputRangeSpeed.value++;
+      speed = convertRangeValueToSpeed(inputRangeSpeed.value);
+      break;
+    default:
+      // do nothing
   }
 });

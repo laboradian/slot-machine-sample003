@@ -14,6 +14,12 @@ canvas {
   border: 1px solid #dfe2e5;
 }
 
+.well {
+  ul > li {
+    line-height: 1.7em;
+  }
+}
+
 .lr-slot-container {
   display: flex;
   width: 594px;
