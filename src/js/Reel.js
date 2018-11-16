@@ -124,7 +124,7 @@ class Reel {
         idx -= this.symbols.length;
       }
 
-      const h = this.SYMBOL_HEIGHT - 1; // 枠線の分は重ねる
+      const h = this.SYMBOL_HEIGHT;
       this.spriteLoader.drawImage(this.symbols[idx],
         this.MARGIN_LEFT,
         this.MARGIN_TOP + (h * i)
