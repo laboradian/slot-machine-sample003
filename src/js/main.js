@@ -9,6 +9,12 @@ import Reel from './Reel';
 // index.html ファイルをコピーする
 require('file-loader?name=../../dist/[name].[ext]!../index.html');
 
+// sw.js ファイルをコピーする
+require('file-loader?name=../../dist/[name].[ext]!../sw.js');
+
+// jQuery ファイルをコピーする
+require('file-loader?name=../../dist/js/[name].[ext]!../js/jquery.min.js');
+
 // 画像のコピー
 require('file-loader?name=../../dist/img/[name].[ext]!../img/sprite.png');
 

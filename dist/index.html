@@ -73,8 +73,18 @@
 
   <hr>
   <footer>© 2017 <a href="http://laboradian.com/">Laboradian</a></footer>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/jquery.min.js" charset="utf-8"></script>
   <script src="js/main.js" charset="utf-8"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').then(function(registration) {
+    // 登録成功
+    console.log('ServiceWorker の登録に成功しました。スコープ: ', registration.scope);
+  }).catch(function(err) {
+    // 登録失敗
+    console.log('ServiceWorker の登録に失敗しました。', err);
+  });
+}
+</script>
 </body>
 </html>
