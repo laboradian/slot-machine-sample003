@@ -1,7 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractSass = new ExtractTextPlugin("[name].css");
+//const ExtractTextPlugin = require("extract-text-webpack-plugin");
+//const extractSass = new ExtractTextPlugin("[name].css");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = [
 {
@@ -71,18 +72,47 @@ module.exports = [
           }
         ]
       },
+           // Sassファイルの読み込みとコンパイル
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: extractSass.extract({
-          fallback: "style-loader",
-          use: ["css-loader", "sass-loader"]
-        })
+        // ローダー名
+
+        use: [
+          MiniCssExtractPlugin.loader,
+          // CSSをバンドルするための機能
+          {
+            loader: 'css-loader',
+            options: {
+            },
+          },
+          // PostCSS
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: function () {
+                return [
+                  require('precss'),
+                  require('autoprefixer')
+                ];
+              }
+            }
+          },
+
+          // Sassをバンドルするための機能
+          {
+            loader: 'sass-loader',
+            options: {
+            }
+          }
+        ]
       }
     ]
   },
   plugins: [
-    extractSass
+    new MiniCssExtractPlugin({
+      filename: './[name].css'
+    })
   ],
   resolve: {
     // style-loader の中で、.jsファイルを拡張子なしで requireしているところがあるため、'.js'が必要
