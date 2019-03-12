@@ -52,6 +52,7 @@
     "babel-polyfill": "^6.23.0",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
-    "mustache": ">=2.2.1"
+    "mustache": ">=2.2.1",
+    "static-eval": ">=2.0.0"
   }
 }
