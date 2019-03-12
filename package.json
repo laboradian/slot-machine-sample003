@@ -27,7 +27,7 @@
     "babel-plugin-espower": "^3.0.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-stage-2": "^6.24.1",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "^3.4.1",
     "css-loader": "^1.0.1",
     "eslint": "^5.9.0",
     "eslint-loader": "^2.1.1",
