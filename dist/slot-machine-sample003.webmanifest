@@ -1,0 +1,16 @@
+{
+    "name": "スロットマシーン3 (PWA対応版)",
+    "short_name": "slot machine sample003 (pwa install)",
+    "description": "",
+    "icons": [
+            {
+                    "src": "img/icon-192.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+            }
+    ],
+    "start_url": "/slot-machine-sample/003-offline3/",
+    "display": "fullscreen",
+    "theme_color": "#dff0d8",
+    "background_color": "#dff0d8"
+}
