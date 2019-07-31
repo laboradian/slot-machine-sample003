@@ -6,7 +6,8 @@ var CACHE_VERSION = 'v1';
 var CACHE_NAME = registration.scope + '!' + CACHE_VERSION;
 
 // キャッシュするファイルをセットする
-var urlsToCache = ['.', 'css/main.css', 'img/sprite.png', 'js/jquery.min.js', 'js/main.js'];
+var urlsToCache = ['.', 'css/main.css', 'img/sprite.png', 'js/jquery.min.js',
+  'js/main.js', 'js/Reel.js', 'js/SpriteLoader.js', 'js/sprite.json'];
 
 self.addEventListener('install', function (event) {
   event.waitUntil(

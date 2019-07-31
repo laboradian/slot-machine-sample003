@@ -1,29 +1,9 @@
 /* global */
-//import '../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js';
-import 'babel-polyfill'
-//import SpriteLoader from './SpriteLoader';
-import Reel from './Reel';
-
-//import _ from 'lodash'
-
-// index.html ファイルをコピーする
-require('file-loader?name=../../dist/[name].[ext]!../index.html');
-
-// sw.js ファイルをコピーする
-require('file-loader?name=../../dist/[name].[ext]!../sw.js');
-
-// jQuery ファイルをコピーする
-require('file-loader?name=../../dist/js/[name].[ext]!../js/jquery.min.js');
-
-// 画像のコピー
-require('file-loader?name=../../dist/img/[name].[ext]!../img/sprite.png');
-
-const spriteJson = require('./sprite.json');
+import Reel from './Reel.js';
 
 console.log('%c 🌈 Laboradian.com 🌈 %c http://laboradian.com ',
   'background: #2383BF; color: #fff; font-size: 1.4em;',
   'background: #e3e3e3; color: #000; margin-bottom: 1px; padding-top: 4px; padding-bottom: 1px;');
-
 
 //======================
 // アプリケーション
@@ -49,25 +29,35 @@ window.addEventListener('load', () => {
 
   //btnStop.style.display = 'none';
 
-  reel0 = new Reel({
-    canvasId: 'reel0',
-    spriteJson
-  });
+  fetch('./js/sprite.json')
+    .then((response) => {
+      return response.json()
+    })
+    .then((spriteJson) => {
 
-  reel1 = new Reel({
-    canvasId: 'reel1',
-    spriteJson
-  });
+      reel0 = new Reel({
+        canvasId: 'reel0',
+        spriteJson
+      });
 
-  reel2 = new Reel({
-    canvasId: 'reel2',
-    spriteJson
-  });
+      reel1 = new Reel({
+        canvasId: 'reel1',
+        spriteJson
+      });
 
-  reel0.init();
-  reel1.init();
-  reel2.init();
+      reel2 = new Reel({
+        canvasId: 'reel2',
+        spriteJson
+      });
 
+      reel0.init();
+      reel1.init();
+      reel2.init();
+
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 });
 
 //---------------
@@ -186,3 +176,4 @@ document.addEventListener('keydown', (event) => {
       // do nothing
   }
 });
+
