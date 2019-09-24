@@ -111,7 +111,6 @@ class Reel {
    *
    */
   start() {
-    console.log('start', this.canvasId);
     this.running = true;
   }
 
@@ -123,7 +122,6 @@ class Reel {
     let i, idx;
 
     if (this.running === false) {
-      console.log('update', this.canvasId, this.running);
       return;
     }
 
