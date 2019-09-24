@@ -22,7 +22,7 @@ let reqId;
 let speed = 10;
 
 let reel0, reel1, reel2;
-let num_running = 0;
+//let num_running = 0;
 let num_play = 0;
 
 window.addEventListener('load', () => {
@@ -76,7 +76,7 @@ const convertRangeValueToSpeed = (value) => {
 
 const start = () => {
   let cnt = 0;
-  num_running = 3;
+  //num_running = 3;
 
   if (num_play > 0) {
     reel0.reInit();
@@ -113,10 +113,11 @@ btnStart.addEventListener('click', () => {
 
 const stopOneSymbole = (reelObj) => {
 
-  num_running--;
+  //num_running--;
   reelObj.stop();
 
-  if (num_running === 0) {
+  if (reel0.running === false && reel1.running === false &&
+      reel2.running === false) {
     window.cancelAnimationFrame(reqId);
     btnStart.disabled = false;
 
@@ -147,21 +148,14 @@ btnStop2.addEventListener('click', () => {
 document.addEventListener('keydown', (event) => {
   switch (event.key) {
     case 'Enter':
-      switch (num_running) {
-        case 3:
-          stopOneSymbole(reel0);
-          break;
-        case 2:
-          stopOneSymbole(reel1);
-          break;
-        case 1:
-          stopOneSymbole(reel2);
-          break;
-        case 0:
-          start();
-          break;
-        default:
-          // do nothing
+      if (reel0.running === true) {
+        stopOneSymbole(reel0);
+      } else if (reel1.running === true) {
+        stopOneSymbole(reel1);
+      } else if (reel2.running === true) {
+        stopOneSymbole(reel2);
+      } else {
+        start();
       }
       break;
     case 'ArrowLeft':
