@@ -7,6 +7,7 @@ class Reel {
    * @param {object} options.spriteJson
    */
   constructor(options) {
+    this.canvasId = options.canvasId;
     this.canvas = document.querySelector(`#${options.canvasId}`);
 
     this.spriteJson = options.spriteJson;
@@ -55,7 +56,11 @@ class Reel {
 
       // シンボルの描画
       for (i=0; i<this.SHOW_MAX; i++) {
-        this.spriteLoader.drawImage(this.symbols[i], this.MARGIN_LEFT, this.MARGIN_TOP + (this.SYMBOL_HEIGHT * i));
+        this.spriteLoader.drawImage(
+          this.symbols[i],
+          this.MARGIN_LEFT,
+          this.MARGIN_TOP + (this.SYMBOL_HEIGHT * i)
+        );
       }
 
     });
@@ -70,7 +75,11 @@ class Reel {
     this.shuffleSymbols();
     // シンボルの描画
     for (i=0; i<this.SHOW_MAX; i++) {
-      this.spriteLoader.drawImage(this.symbols[i], this.MARGIN_LEFT, this.MARGIN_TOP + (this.SYMBOL_HEIGHT * i));
+      this.spriteLoader.drawImage(
+        this.symbols[i],
+        this.MARGIN_LEFT,
+        this.MARGIN_TOP + (this.SYMBOL_HEIGHT * i)
+      );
     }
   }
 
@@ -102,7 +111,8 @@ class Reel {
    *
    */
   start() {
-    this.num_running = true;
+    console.log('start', this.canvasId);
+    this.running = true;
   }
 
   /**
@@ -112,7 +122,8 @@ class Reel {
 
     let i, idx;
 
-    if (this.num_running === false) {
+    if (this.running === false) {
+      console.log('update', this.canvasId, this.running);
       return;
     }
 
@@ -125,7 +136,8 @@ class Reel {
       }
 
       const h = this.SYMBOL_HEIGHT;
-      this.spriteLoader.drawImage(this.symbols[idx],
+      this.spriteLoader.drawImage(
+        this.symbols[idx],
         this.MARGIN_LEFT,
         this.MARGIN_TOP + (h * i)
       );
@@ -141,7 +153,8 @@ class Reel {
   }
 
   stop() {
-    this.num_running = false;
+    console.log('stop', this.canvasId);
+    this.running = false;
   }
 }
 
